@@ -18,13 +18,14 @@ public class NoteRepositoryImpl implements NoteRepository {
 	private EntityManager entityManager;
 
 	@Override
-	public List<Note> getAllNotes() {
+	public List<Note> getAllNotes(String userId) {
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
 
 		// create a query
-		Query theQuery = currentSession.createQuery("from Note order by id", Note.class);
-
+		Query theQuery = currentSession.createQuery("from Note N where N.userId = :user_id", Note.class);
+		theQuery.setParameter("user_id",userId);
+		
 		// execute query and get result list
 		List<Note> notes = theQuery.getResultList();
 
@@ -36,6 +37,13 @@ public class NoteRepositoryImpl implements NoteRepository {
 	public Note addNote(Note note) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		currentSession.saveOrUpdate(note);
+		return note;
+	}
+
+	@Override
+	public Note deleteNote(Note note) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		currentSession.delete(note);
 		return note;
 	}
 

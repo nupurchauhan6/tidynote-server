@@ -17,14 +17,20 @@ public class NoteServiceImpl implements NoteService {
 	
 	@Override
 	@Transactional
-	public List<Note> getAllNotes() {
-		return noteRepository.getAllNotes();
+	public List<Note> getAllNotes(String userId) {
+		return noteRepository.getAllNotes(userId);
 	}
 
 	@Override
 	@Transactional
 	public Note addNote(Note note) {
 		return noteRepository.addNote(note);
+	}
+
+	@Override
+	@Transactional
+	public Note deleteNote(Note note) {
+		return noteRepository.deleteNote(note);
 	}
 
 }

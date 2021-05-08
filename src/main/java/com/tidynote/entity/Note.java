@@ -10,8 +10,8 @@ import javax.persistence.Table;
 public class Note {
 
 	@Id
-	@Column(name = "id")
-	private String id;
+	@Column(name = "note_id")
+	private String noteId;
 
 	@Column(name = "title")
 	private String title;
@@ -24,25 +24,28 @@ public class Note {
 
 	@Column(name = "updated_date")
 	private String updatedDate;
+	
+	@Column(name = "user_id")
+	private String userId;
 
 	public Note() {
 
 	}
 
-	public Note(String id, String title, String content, String createdDate, String updatedDate) {
-		this.id = id;
+	public Note(String noteId, String title, String content, String createdDate, String updatedDate) {
+		this.noteId = noteId;
 		this.title = title;
 		this.content = content;
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
 	}
 
-	public String getId() {
-		return id;
+	public String getNoteId() {
+		return noteId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setNoteId(String noteId) {
+		this.noteId = noteId;
 	}
 
 	public String getTitle() {
@@ -76,5 +79,12 @@ public class Note {
 	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
-
+	
+	public String getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }
