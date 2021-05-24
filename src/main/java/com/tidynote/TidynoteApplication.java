@@ -1,13 +1,18 @@
 package com.tidynote;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class TidynoteApplication {
+@EnableAutoConfiguration
+@ComponentScan
+public class TidyNoteApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TidynoteApplication.class, args);
+		SpringApplication.run(TidyNoteApplication.class, args);
 	}
 
 }
